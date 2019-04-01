@@ -1,41 +1,30 @@
-package Lab2;
-
-import java.util.Scanner;
+package sessiom7;
 
 public class Student {
- int MaSinhVien;
- double DiemTrungBinh;
- int age;
- int Class;
-    void  inputInfo(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập Mã sinh viên :");
-         MaSinhVien = scanner.nextInt();
-        System.out.println("Nhập điểm trung bình :");
-        DiemTrungBinh = scanner.nextDouble();
-        System.out.println("Nhập Tuổi : ");
-        age = scanner.nextInt();
-        System.out.println("Nhập Lớp: ");
-        Class = scanner.nextInt();
-    }
-    void  ShowInfo(){
-        System.out.println("Mã Sinh viên :"+ MaSinhVien +"Điểm trung bình :"+DiemTrungBinh );
-        System.out.println("Tuổi : "+age + "Lớp :"+ Class);
-    }
-    public int getMaSinhVien() {
-        return MaSinhVien;
+    String id;
+    String name;
+    int age;
+    String adress;
+    float gpa;
+
+    public Student() {
+        System.out.println("bạn vừa tạo ra 1 đối tượng học sinh!");
     }
 
-    public void setMaSinhVien(int maSinhVien) {
-        MaSinhVien = maSinhVien;
+    public String getId() {
+        return id;
     }
 
-    public double getDiemTrungBinh() {
-        return DiemTrungBinh;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setDiemTrungBinh(double diemTrungBinh) {
-        DiemTrungBinh = diemTrungBinh;
+    public String getNameString() {
+        return name;
+    }
+
+    public void setNameString(String nameString) {
+        this.name = nameString;
     }
 
     public int getAge() {
@@ -45,18 +34,20 @@ public class Student {
     public void setAge(int age) {
         this.age = age;
     }
-     String setHocBong(){
-        if(DiemTrungBinh>8.0){
-                return  "Sinh viên đạt được học bổng";
-        }else
-                return "Sinh Viên không đạt đc học bổng";
+
+    public String getAdress() {
+        return adress;
     }
-    public static void main(String[] args) {
-        Student Sv = new Student();
-            Sv.inputInfo();
-            Sv.ShowInfo();
-        System.out.println(Sv.setHocBong());
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public float getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(float gpa) {
+        this.gpa = gpa;
     }
 }
-
-
