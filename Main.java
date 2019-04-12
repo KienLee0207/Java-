@@ -1,26 +1,14 @@
-package Assignment_3;
-
+package Labss3_Threads;
 
 public class Main {
-    public static void main(String[] args) {
-        Thread1 t1 = new Thread1();
-        t1.start();
-        Thread2 t2 =new Thread2();
-        t2.start();
-       Runnable runnable = new Runnable() {
-           @Override
-           public void run() {
-               for (int i=1;i<50;i++){
-                   try {
-                       System.out.println("Thread3: "+i);
-                       Thread.sleep(1000);
-                   } catch (Exception e){}
 
-               }
-           }
-       };
-        Thread t3 = new Thread(runnable);
-        t3.start();
+    public static void main(String[] args) {
+         subthread s1 = new subthread();
+        System.out.println(s1.getName());
+        s1.setName("myJavaThread");
+        System.out.println(s1.getName());
+        s1.run();
+        System.out.println("chúc mừng");
 
     }
 }
