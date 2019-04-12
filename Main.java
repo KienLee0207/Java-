@@ -1,23 +1,26 @@
-package sample;
-
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-public class Main extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("songuyento.fxml"));
-        primaryStage.setTitle("Tìm số nguyên tố");
-        primaryStage.setScene(new Scene(root, 500,600));
-        primaryStage.show();
-    }
+package Assignment_3;
 
 
+public class Main {
     public static void main(String[] args) {
-        launch(args);
+        Thread1 t1 = new Thread1();
+        t1.start();
+        Thread2 t2 =new Thread2();
+        t2.start();
+       Runnable runnable = new Runnable() {
+           @Override
+           public void run() {
+               for (int i=1;i<50;i++){
+                   try {
+                       System.out.println("Thread3: "+i);
+                       Thread.sleep(1000);
+                   } catch (Exception e){}
+
+               }
+           }
+       };
+        Thread t3 = new Thread(runnable);
+        t3.start();
+
     }
 }
