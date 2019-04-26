@@ -1,9 +1,18 @@
 package session_6;
 import java.sql.*;
 import java.util.Scanner;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import  javafx.scene.control.Alert;
 public class userr {
+    static Button button;
+    public TextField User;
+    public TextField passwordd;
     static Statement statement;
     static  ResultSet resultSet;
+    static String username;
+    static  String password;
+    static  String email;
 
     public static final int ACTIVE = 1;
     public static final int DEACTIVE = 0;
@@ -15,7 +24,7 @@ public class userr {
             boolean start =  true;
             Scanner scanner = new Scanner(System.in);
             while (start){
-                System.out.println("Nhap vao lua chon:");
+                System.out.println("Nhập vào lựa chọn:");
                 System.out.println("1. Login");
                 System.out.println("2. Register");
                 System.out.println("3. Listing");
@@ -39,28 +48,28 @@ public class userr {
 
     public static void login(Connector connector) throws Exception{
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhap username:");
-        String username = scanner.nextLine();
-        System.out.println("Nhap password:");
-        String password =  scanner.nextLine();
+        System.out.println("UserName:");
+        username = scanner.nextLine();
+        System.out.println("Password:");
+         password =  scanner.nextLine();
         String sql = "SELECT * FROM userr WHERE password LIKE '"+password
                 + "' AND username LIKE '"+username+"'";
         ResultSet rs = connector.getQuery(sql);
         if(rs.next()){
-            System.out.println("Dang nhap thanh cong");
+            System.out.println("Đăng nhập thành công !!!");
             return;
         }
-        System.out.println("Sai username hoac password.");
+        System.out.println("Sai username hoặc password.");
     }
 
     public static void register(Connector connector) throws Exception{
     Scanner scanner = new Scanner(System.in);
         System.out.println("Name: ");
-        String username = scanner.nextLine();
+         username = scanner.nextLine();
         System.out.println("Email: ");
-        String email = scanner.nextLine();
+         email = scanner.nextLine();
         System.out.println("Password: ");
-        String password = scanner.nextLine();
+         password = scanner.nextLine();
         String sql = "INSERT INTO userr(username,email,password,status) VALUES('"+username+"','"+
                 email+"','"+password+"',"+ACTIVE+")";
         if(connector.updateQuery(sql)>0){
@@ -112,4 +121,21 @@ public class userr {
                 e.printStackTrace();
             }
         }
+        public  void  login() throws SQLException {
+        String s = "SELECT * FROM userr";
+        resultSet = statement.executeQuery(s);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Test Connection");
+            alert.setContentText("đăng nhập thành công !!!");
+//            alert.showAndWait()
+        try {
+            while (User.getText().equals(resultSet.getString("username")) && passwordd.getText().equals(resultSet.getString("password"))){
+                alert.showAndWait();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        }
+
 }
