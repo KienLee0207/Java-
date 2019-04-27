@@ -1,5 +1,7 @@
-package session_6;
-import java.sql.*;
+package Exam;
+import  java.sql.*;
+import java.util.Scanner;
+
 public class Connector {
     public  Connection conn;
     public Connector(){
@@ -25,6 +27,8 @@ public class Connector {
     public void close() throws Exception{
         this.conn.close();
     }
+
+
 
 }
 
